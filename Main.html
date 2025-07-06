@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <title>Pricing component with toggle</title>
+    <head>
+        <style>
+            .button {
+              background-color:  #966dd3;
+              border: none;
+              color: white;
+              padding: 10px 20px;
+              text-align: center;
+              font-size: 16px;
+              margin: 4px 2px;
+              opacity: 0.6;
+              transition: 0.3s;
+              display: inline-block;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            
+            .button:hover {opacity: 1}
+            .pbutton {
+              background-color:  white ;
+              border: none;
+              color: #966dd3;
+              padding: 10px 20px;
+              text-align: center;
+              font-size: 16px;
+              margin: 4px 2px;
+              opacity: 0.6;
+              transition: 0.3s;
+              display: inline-block;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            
+            .pbutton:hover {opacity: 1}
+            table {
+  overflow:hidden;
+}
+
+th {
+  position:sticky;
+}
+th:hover::after {
+  content: "";
+  position: absolute;
+  background-color: rgb(174, 234, 245);
+  left: 0;
+  top: -5000px;
+  height: 10000px;
+  width: 100%;
+  z-index: -1;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin: 0 10px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #f8f7f7;
+  transition: .4s;
+  border-radius: 24px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #8d55e9;
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+
+            </style>
+    </head>
+     <body style="background-image:url('background.png');height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;">
+        <h1 align="center" style="color: #8d55e9;font-size: 50px;font-style:inherit;" >Welcome to SkyVault</h1>
+        <h2 align="center" style="font-size: 30px;">India's Biggest Cloud Storage and File Sharing Services</h2>
+        <h2 align="center" >Our Pricing</h2>
+        <h3 align="center">
+  Annually
+  <label class="switch">
+    <input type="checkbox" id="toggleSwitch" checked>
+    <span class="slider round"></span>
+  </label>
+  Monthly
+</h3>
+
+        
+        <center> <table  style="width: 40%;  " >
+            
+            <th style="background-color: rgba(248, 242, 250, 0.925);border-radius: 10px;height: 400px;" ><p align="center">Basic</p>
+                <h1 align="center" style="font-size: 50px;">$19.99</h1>
+                    <hr width="150px">
+                    <p>500 GB Storage</p>
+                    <hr width="150px">
+                    <p>2 users allowed</p>
+                    <hr width="150px">
+                    <p>send upto 3 GB</p>
+                    <hr width="150px">
+                
+                    <button class="button" onclick="location.href='login.html'">Buy</button>
+            <th style=" background-color: rgba(123, 106, 199, 0.925);border-radius: 10px;"  > <p align="center">Professional</p>
+                <h1 align="center" style="font-size: 50px;">$24.99</h1>
+                    <hr width="150px">
+                    <p>1 TB Storage</p>
+                    <hr width="150px">
+                    <p>5 users allowed</p>
+                    <hr width="150px">
+                    <p>send upto 10 GB</p>
+                    <hr width="150px">
+                
+                    <button class="pbutton" onclick="location.href='login.html'">Buy</button> 
+            
+
+            <th style="background-color: rgba(248, 242, 250, 0.925) ;border-radius: 10px;"><p align="center">Master</p>
+                <h1 align="center" style="font-size: 50px;">$39.99</h1>
+                    <hr width="150px">
+                    <p>2 TB Storage</p>
+                    <hr width="150px">
+                    <p>10 users allowed</p>
+                    <hr width="150px">
+                    <p>send upto 20 GB</p>
+                    <hr width="150px">
+                
+               <button class="button"  onclick="location.href='login.html'">Buy</button> 
+            </th>
+      </table></center>
+            
+            
+           <script>
+  const toggle = document.getElementById('toggleSwitch');
+  toggle.addEventListener('change', function () {
+    if (!this.checked) {
+      window.location.href = "index.html";
+    }
+  });
+</script>
+
+                 
+    </body>
+</html>

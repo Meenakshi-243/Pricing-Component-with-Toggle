@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f0fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+    .payment-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    h2 {
+      text-align: center;
+      color: #5d4ea0;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .hidden {
+      display: none;
+    }
+    .success-msg {
+      color: green;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #5d4ea0;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .back-btn:hover {
+      background: #4a3c8c;
+    }
+  </style>
+</head>
+<body  align="center" style="background-image:url('background.png');background-position: center;background-repeat: no-repeat;background-size: cover;">
+
+<div class="payment-box">
+ 
+  <a href="Monthly.html" class="back-btn">← Back</a>
+
+  <h2>Subscribe Now</h2>
+ 
+  <input type="text" id="name" placeholder="Enter Name" required>
+  <input type="email" id="email" placeholder="Enter Email" required>
+  <input type="tel" id="phone" placeholder="Enter Phone Number" required>
+
+  <select id="paymentMethod">
+    <option value="" disabled selected>Select Payment Option</option>
+    <option value="upi">UPI</option>
+    <option value="netbanking">Net Banking</option>
+  </select>
+
+  <div id="upiBox" class="hidden">
+    <input type="text" id="upiId" placeholder="Enter UPI ID" required>
+  </div>
+
+  <div id="netBankingBox" class="hidden">
+    <input type="text" id="cardNumber" placeholder="Enter Card Number" required>
+    <input type="text" id="cardExpiry" placeholder="MM/YY" required>
+    <input type="text" id="cardCVV" placeholder="CVV" required>
+  </div>
+
+  <button id="payBtn">Make Payment</button>
+ 
+  <div id="successMsg" class="success-msg hidden">
+    Payment Successful! You got the subscription 🎉
+  </div>
+</div>
+
+<script>
+  const paymentMethod = document.getElementById('paymentMethod');
+  const upiBox = document.getElementById('upiBox');
+  const netBankingBox = document.getElementById('netBankingBox');
+  const payBtn = document.getElementById('payBtn');
+  const successMsg = document.getElementById('successMsg');
+
+  paymentMethod.addEventListener('change', () => {
+    upiBox.classList.add('hidden');
+    netBankingBox.classList.add('hidden');
+   
+    if (paymentMethod.value === 'upi') {
+      upiBox.classList.remove('hidden');
+    } else if (paymentMethod.value === 'netbanking') {
+      netBankingBox.classList.remove('hidden');
+    }
+  });
+
+  payBtn.addEventListener('click', () => {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const method = paymentMethod.value;
+
+    if (!name || !email || !phone || !method) {
+      alert('Please fill all required fields.');
+      return;
+    }
+
+    if (method === 'upi' && !document.getElementById('upiId').value.trim()) {
+      alert('Please enter UPI ID.');
+      return;
+    }
+
+    if (method === 'netbanking') {
+      const card = document.getElementById('cardNumber').value.trim();
+      const expiry = document.getElementById('cardExpiry').value.trim();
+      const cvv = document.getElementById('cardCVV').value.trim();
+      if (!card || !expiry || !cvv) {
+        alert('Please fill all card details.');
+        return;
+      }
+    }
+
+    successMsg.classList.remove('hidden');
+  });
+</script>
+
+</body>
+</html>
